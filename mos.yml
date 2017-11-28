@@ -14,7 +14,7 @@ tags:
   - c
 
 libs:
-  - origin: ../libs/onewire-rmt
+  - origin: https://github.com/nliviu/onewire-rmt
 
 build_vars:
 
