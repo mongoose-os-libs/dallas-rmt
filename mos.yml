@@ -1,7 +1,9 @@
-author: mongoose-os
+author: nliviu
 description: Implements Mongoose dallas rmt driver
 type: lib
 version: 1.0
+
+platforms: [ esp32 ]
 
 sources:
   - src
