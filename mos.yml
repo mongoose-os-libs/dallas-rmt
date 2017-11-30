@@ -16,7 +16,7 @@ tags:
   - c
 
 libs:
-  - origin: https://github.com/nliviu/onewire-rmt
+  - origin: https://github.com/mongoose-os-libs/onewire-rmt
 
 build_vars:
 
