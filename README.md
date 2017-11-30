@@ -42,7 +42,7 @@ extern "C"
 enum mgos_app_init_result mgos_app_init(void)
 {
     dallas = new DallasRmt();
-    ow = new OnewireRmt(mgos_sys_config_get_app_pin_ds18B20());
+    ow = new OnewireRmt(13 /*pin*/, 0 /*rmt_rx*/, 1 /*rmt_tx*/);
     dallas->setOneWire(ow);
     dallas->begin();
     numDevices = dallas->getDeviceCount();
@@ -100,7 +100,7 @@ static void loop_onewire(void *arg) {
 }
 
 enum mgos_app_init_result mgos_app_init(void) {
-    OnewireRmt* ow = mgos_onewire_rmt_create(mgos_sys_config_get_app_pin_ds18B20());
+    OnewireRmt* ow = mgos_onewire_rmt_create(13 /*pin*/, 0 /*rmt_rx*/, 1 /*rmt_tx*/);
     dallas = mgos_dallas_rmt_create(ow);
     
     mgos_dallas_rmt_begin(dallas);
