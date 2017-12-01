@@ -22,6 +22,7 @@ class DallasRmt
 public:
     DallasRmt();
     DallasRmt(OnewireRmt* ow);
+    DallasRmt(uint8_t pin,uint8_t rmt_rx,uint8_t rmt_tx);
 
     void setOneWire(OnewireRmt* ow);
 
