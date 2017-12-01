@@ -17,6 +17,7 @@ extern "C"
     // Initialize DallasRmt driver.
     // Return value: handle opaque pointer.
     DallasRmt *mgos_dallas_rmt_create(OnewireRmt* ow);
+    DallasRmt* mgos_dallas_rmt_create_with_channels(uint8_t pin,uint8_t rmt_rx,uint8_t rmt_tx);
 
     // Close DallasRmt handle. Return value: none.
     void mgos_dallas_rmt_close(DallasRmt *dt);
