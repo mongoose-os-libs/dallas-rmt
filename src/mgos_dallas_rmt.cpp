@@ -8,6 +8,11 @@ DallasRmt *mgos_dallas_rmt_create(OnewireRmt* ow)
     return new DallasRmt(ow);
 }
 
+DallasRmt* mgos_dallas_rmt_create_with_channels(uint8_t pin, uint8_t rmt_rx, uint8_t rmt_tx)
+{
+    return new DallasRmt(pin, rmt_rx, rmt_tx);
+}
+
 void mgos_dallas_rmt_close(DallasRmt *dt)
 {
     if (dt != nullptr) {
