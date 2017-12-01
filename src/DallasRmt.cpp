@@ -42,6 +42,12 @@ DallasRmt::DallasRmt(OnewireRmt* ow)
     setOneWire(ow);
 }
 
+DallasRmt::DallasRmt(uint8_t pin, uint8_t rmt_rx, uint8_t rmt_tx)
+: _ow(new OnewireRmt(pin, rmt_rx, rmt_tx))
+{
+
+}
+
 void DallasRmt::setOneWire(OnewireRmt* ow)
 {
     _ow = ow;
