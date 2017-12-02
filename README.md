@@ -1,5 +1,6 @@
 # Library to read Dallas temperature sensor using ESP32's RMT device
-The library uses the `onewire-rmt` library.
+The library uses the `onewire-rmt` library. 
+A pullup resistor (4.7k) must be connected between the data line of the sensor and Vcc.
 
 # Example code in C++
 ```
