@@ -32,24 +32,39 @@
 #define MAX(a,b) (((a)>(b))?(a):(b))
 #endif
 
-DallasRmt::DallasRmt() : _ow(nullptr)
+DallasRmt::DallasRmt() : _ow(nullptr), _ownOnewire(false)
 {
 
 }
 
-DallasRmt::DallasRmt(OnewireRmt* ow)
+DallasRmt::DallasRmt(OnewireRmt* ow): _ownOnewire(false)
 {
     setOneWire(ow);
 }
 
 DallasRmt::DallasRmt(uint8_t pin, uint8_t rmt_rx, uint8_t rmt_tx)
-: _ow(new OnewireRmt(pin, rmt_rx, rmt_tx))
+: _ow(new OnewireRmt(pin, rmt_rx, rmt_tx)), _ownOnewire(true)
 {
+    _devices = 0;
+    _parasite = false;
+    _bitResolution = 9;
+    _waitForConversion = true;
+    _checkForConversion = true;
+}
 
+DallasRmt::~DallasRmt()
+{
+    if (_ownOnewire) {
+        delete _ow;
+    }
 }
 
 void DallasRmt::setOneWire(OnewireRmt* ow)
 {
+    if (_ownOnewire) {
+        delete _ow;
+        _ow = nullptr;
+    }
     _ow = ow;
     _devices = 0;
     _parasite = false;
