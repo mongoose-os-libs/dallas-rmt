@@ -28,7 +28,9 @@ public:
 
     void setOneWire(OnewireRmt* ow);
 
-    // initialise bus
+    /*
+     * Initialises the bus
+     */
     void begin(void);
     // returns the number of devices found on the bus
 
