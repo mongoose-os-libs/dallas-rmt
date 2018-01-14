@@ -51,7 +51,6 @@ let DallasRmt = {
     //
     // Example:
     // ```javascript
-    // let ow = OneWire(12 /* onewire pin number */);
     // let myDT = DallasRmt.create(12 /* onewire pin number */, 0 /*RMT rx channel*/, 1 /*RMT tx channel*/);
     // ```
     create: function (pin, rmt_rx, rmt_tx) {
