@@ -11,19 +11,20 @@ typedef struct OnewireRmtTag OnewireRmt;
 #endif
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 /* Initializes the DallasRmt driver with a `OnewireRmt*` object.
  * Return value: handle opaque pointer.
  */
-DallasRmt *mgos_dallas_rmt_create(OnewireRmt* ow);
+DallasRmt *mgos_dallas_rmt_create(OnewireRmt *ow);
 
-/* Initializes the DallasRmt driver with a GPIO `pin`, the RMT receive channel `rmt_rx`
+/* Initializes the DallasRmt driver with a GPIO `pin`, the RMT receive channel
+ * `rmt_rx`
  * and the RMT transmit channel `rmt_tx`.
  * Return value: handle opaque pointer.
  */
-DallasRmt* mgos_dallas_rmt_create_with_channels(uint8_t pin, uint8_t rmt_rx, uint8_t rmt_tx);
+DallasRmt *mgos_dallas_rmt_create_with_channels(uint8_t pin, uint8_t rmt_rx,
+                                                uint8_t rmt_tx);
 
 /*
  *  Close DallasRmt handle. Return value: none.
@@ -61,14 +62,16 @@ bool mgos_dallas_rmt_valid_family(DallasRmt *dt, const char *addr);
 bool mgos_dallas_rmt_get_address(DallasRmt *dt, char *addr, int idx);
 
 /*
- * Attempt to determine if the device at the given address is connected to the bus.
+ * Attempt to determine if the device at the given address is connected to the
+ * bus.
  * Return false if the device is not connected or an operaiton failed.
  * Returns true otherwise.
  */
 bool mgos_dallas_rmt_is_connected(DallasRmt *dt, const char *addr);
 
 /*
- * Attempts to determine if the device at the given address is connected to the bus.
+ * Attempts to determine if the device at the given address is connected to the
+ * bus.
  * Also allows for updating the read scratchpad.
  * Return false if the device is not connected or an operaiton failed.
  * Returns true otherwise.
@@ -80,12 +83,14 @@ bool mgos_dallas_rmt_is_connected_sp(DallasRmt *dt, const char *addr, char *sp);
  * Returns false if an operaiton failed.
  * Returns true otherwise.
  */
-bool mgos_dallas_rmt_read_scratch_pad(DallasRmt *dt, const char *addr, char *sp);
+bool mgos_dallas_rmt_read_scratch_pad(DallasRmt *dt, const char *addr,
+                                      char *sp);
 
 /*
  * Writes device's scratchpad.
  */
-void mgos_dallas_rmt_write_scratch_pad(DallasRmt *dt, const char *addr, const char *sp);
+void mgos_dallas_rmt_write_scratch_pad(DallasRmt *dt, const char *addr,
+                                       const char *sp);
 
 /*
  * Read device's power requirements.
@@ -116,7 +121,8 @@ int mgos_dallas_rmt_get_resolution(DallasRmt *dt, const char *addr);
  * Return true if a new value was stored.
  * Returns false otherwise.
  */
-bool mgos_dallas_rmt_set_resolution(DallasRmt *dt, const char *addr, int res, bool skip_global_calc);
+bool mgos_dallas_rmt_set_resolution(DallasRmt *dt, const char *addr, int res,
+                                    bool skip_global_calc);
 
 /*
  * Sets the waitForConversion flag.
@@ -152,7 +158,8 @@ void mgos_dallas_rmt_request_temperatures(DallasRmt *dt);
  * Returns false if a device is disconnected or if an operaiton failed.
  * Returns true otherwise.
  */
-bool mgos_dallas_rmt_request_temperatures_by_address(DallasRmt *dt, const char *addr);
+bool mgos_dallas_rmt_request_temperatures_by_address(DallasRmt *dt,
+                                                     const char *addr);
 
 /*
  * Sends command for one device to perform a temperature conversion by index.
@@ -204,7 +211,8 @@ bool mgos_dallas_rmt_is_parasite_power_mode(DallasRmt *dt);
 bool mgos_dallas_rmt_is_conversion_complete(DallasRmt *dt);
 
 /*
- * Returns number of milliseconds to wait till conversion is complete (based on IC datasheet)
+ * Returns number of milliseconds to wait till conversion is complete (based on
+ * IC datasheet)
  * or 0 if an operaiton failed.
  */
 int16_t mgos_dallas_rmt_millis_to_wait_for_conversion(DallasRmt *dt, int res);
