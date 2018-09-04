@@ -1,6 +1,7 @@
 
 #include "DallasRmt.h"
 #include <mgos_system.h>
+#include <mgos_time.h>
 
 // OneWire commands
 #define STARTCONVO \
@@ -439,10 +440,13 @@ int16_t DallasRmt::calculateTemperature(const uint8_t *deviceAddress,
 }
 // Continue to check if the IC has responded with a temperature
 /* In components/newlib/time.c. Returns a monotonic microsecond counter. */
-extern "C" uint64_t get_time_since_boot();
+//extern "C" uint64_t get_time_since_boot();
+static inline uint64_t get_time_since_boot(){
+  return 1000*mgos_uptime(); // milliseconds
+}
 
 void DallasRmt::blockTillConversionComplete(uint8_t bitResolution) {
-  uint32_t delms = 1000 * millisToWaitForConversion(bitResolution);
+  uint32_t delms = /*1000 **/ millisToWaitForConversion(bitResolution);
   if (_checkForConversion && !_parasite) {
     uint64_t now = get_time_since_boot();  // millis();
     while (!isConversionComplete() && (get_time_since_boot() - delms < now))
